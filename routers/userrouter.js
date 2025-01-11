@@ -1,14 +1,15 @@
 const express = require("express");
 const usercontroler = require("../controller/usercontroller");
+const usersmiddleware = require("../middleware/usersmiddleware");
 const router = express.Router();
 router
   .route("/")
   .get(usercontroler.getallusers)
-  .post(usercontroler.checkbody, usercontroler.addnewuser);
+  .post(usersmiddleware.checkbody, usercontroler.addnewuser);
 router
   .route("/:id")
-  .get(usercontroler.getsingleuser)
-  .patch(usercontroler.updateuser)
-  .delete(usercontroler.updateuser);
+  .get(usersmiddleware.checkid, usercontroler.getsingleuser)
+  .patch(usersmiddleware.checkid, usercontroler.updateuser)
+  .delete(usersmiddleware.checkid, usercontroler.deleteuser);
 
 module.exports = router;
