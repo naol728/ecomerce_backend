@@ -1,16 +1,5 @@
 const User = require("../model/usermodel");
 
-exports.checkbody = (req, res, next) => {
-  const { password, email, name } = req.body;
-  if (!password || !email || !name) {
-    return res.status(400).json({
-      status: "error",
-      message: "name email password requred",
-    });
-  }
-  next();
-};
-
 exports.getallusers = async (req, res) => {
   try {
     const users = await User.find();
@@ -29,12 +18,6 @@ exports.getsingleuser = async (req, res) => {
   const userid = req.params.id;
   try {
     const user = await User.findById(userid);
-    if (!user) {
-      return res.status(404).json({
-        status: "faild",
-        message: `no user found${userid}`,
-      });
-    }
     res.status(200).json({
       ststus: "sucess",
       message: user,
@@ -46,17 +29,39 @@ exports.getsingleuser = async (req, res) => {
     });
   }
 };
-exports.updateuser = (req, res) => {
-  res.status(200).json({
-    status: "sucesss",
-    message: "update single user",
-  });
+exports.updateuser = async (req, res) => {
+  const userid = req.params.id;
+  const updateData = req.body;
+
+  try {
+    const user = await User.findByIdAndUpdate(userid, updateData, {
+      new: true,
+      runValidators: true,
+    });
+    res.status(200).json({
+      status: "success",
+      message: user,
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: "internal server error",
+      message: err,
+    });
+  }
 };
-exports.deleteuser = (req, res) => {
-  res.status(200).json({
-    status: "sucesss",
-    message: "delete user",
-  });
+exports.deleteuser = async (req, res) => {
+  const userid = req.params.id;
+  try {
+    const user = await User.findByIdAndDelete(userid);
+    res.status(201).json({
+      status: "sucesss",
+      message: user,
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: "inetrnal serever error",
+    });
+  }
 };
 exports.addnewuser = async (req, res) => {
   const { name, email, password, isAdmin, profileImage, phone } = req.body;
