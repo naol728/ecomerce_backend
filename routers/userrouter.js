@@ -1,22 +1,12 @@
 const express = require("express");
+const usercontroler = require("../controller/usercontroller");
 const router = express.Router();
 
-router
-  .route("/")
-  .get((req, res) => {
-    res.send("this is get all user route");
-  })
-  .post((req, res) => {
-    res.send("this is add new user route ");
-  });
+router.route("/").get(usercontroler.getallusers).post(usercontroler.addnewuser);
 router
   .route("/:id")
-  .get((req, res) => {
-    const id = req.params.id;
-    res.send(`this get single user route ${id}`);
-  })
-  .patch((req, res) => {
-    res.send("this is update user route ");
-  });
+  .get(usercontroler.getsingleuser)
+  .patch(usercontroler.updateuser)
+  .delete(usercontroler.updateuser);
 
 module.exports = router;
