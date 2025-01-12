@@ -1,21 +1,22 @@
 const Product = require("../model/productmodel");
 
-exports.getallproducts = (req, res) => {
-  res.status(200).json({
-    status: "sucess",
-    requestTime: req.requestTime,
-    message: "all products",
-  });
+exports.getallproducts = async (req, res) => {
+  try {
+    const products = await Product.find();
+    res.status(200).json({
+      status: "sucess",
+      data: products,
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: "internal server error",
+    });
+  }
 };
 exports.getsingleproduct = async (req, res) => {
   const id = req.params.id;
   try {
     const product = await Product.findById(id);
-    if (!product) {
-      return res.status(400).json({
-        message: `no product with ${id}`,
-      });
-    }
     res.status(200).json({
       message: "found",
       data: product,
@@ -26,24 +27,32 @@ exports.getsingleproduct = async (req, res) => {
     });
   }
 };
-exports.updateproduct = (req, res) => {
-  res.status(200).json({
-    status: "sucess",
-    requestTime: req.requestTime,
-    message: "update the product",
-  });
+exports.updateproduct = async (req, res) => {
+  const productid = req.params.id;
+  const updateData = req.body;
+
+  try {
+    const product = await Product.findByIdAndUpdate(productid, updateData, {
+      new: true,
+      runValidators: true,
+    });
+    res.status(200).json({
+      status: `successfuly updated `,
+      data: product,
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: "internal server error",
+      message: err,
+    });
+  }
 };
 exports.deleteproduct = async (req, res) => {
   const id = req.params.id;
   try {
     const product = await Product.findByIdAndDelete(id);
-    if (!product) {
-      res.status(400).json({
-        status: "fail",
-        message: "can not find the product",
-      });
-    }
-    res.status(301).json({
+
+    res.status(200).json({
       status: "sucessfully deleted ",
       data: product,
     });

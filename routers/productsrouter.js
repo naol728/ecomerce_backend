@@ -10,8 +10,8 @@ router
 
 router
   .route("/:id")
-  .get(productcontroler.getsingleproduct)
-  .patch(productcontroler.updateproduct)
-  .delete(productcontroler.deleteproduct);
+  .get(productmiddleware.checkid, productcontroler.getsingleproduct)
+  .patch(productmiddleware.checkid,productcontroler.updateproduct)
+  .delete(productmiddleware.checkid, productcontroler.deleteproduct);
 
 module.exports = router;
