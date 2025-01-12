@@ -1,7 +1,7 @@
 const express = require("express");
 const userrouter = require("./routers/userrouter");
 const productrouter = require("./routers/productsrouter");
-
+const orderroute = require("./routers/orderroute");
 const app = express();
 
 app.use(express.json());
@@ -10,7 +10,8 @@ app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();
 });
-app.use("/users", userrouter);
-app.use("/products", productrouter);
+app.use("/api/users", userrouter);
+app.use("/api/products", productrouter);
+app.use("/api/order", orderroute);
 
 module.exports = app;
