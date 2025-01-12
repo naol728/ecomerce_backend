@@ -39,8 +39,8 @@ exports.updateuser = async (req, res) => {
       runValidators: true,
     });
     res.status(200).json({
-      status: "success",
-      message: user,
+      status: `successfuly updated `,
+      data: user,
     });
   } catch (err) {
     res.status(500).json({
@@ -54,8 +54,8 @@ exports.deleteuser = async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(userid);
     res.status(201).json({
-      status: "sucesss",
-      message: user,
+      status: `sucesssfully deleted ${user}`,
+      data: user,
     });
   } catch (err) {
     res.status(500).json({
@@ -80,8 +80,8 @@ exports.addnewuser = async (req, res) => {
 
   await Newuser.save();
 
-  res.status(200).json({
+  res.status(201).json({
     status: "new user saved succesfuly",
-    message: Newuser,
+    data: Newuser,
   });
 };
