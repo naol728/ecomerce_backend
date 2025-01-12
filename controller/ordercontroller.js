@@ -33,7 +33,18 @@ exports.getsingleorder = async (req, res) => {
   }
 };
 exports.updateorder = async (req, res) => {
+  const orderid = req.params.id;
+
   try {
+    const updatedorder = req.body;
+    const order = await Order.findByIdAndUpdate(orderid, updatedorder, {
+      new: true,
+      runValidators: true,
+    });
+    res.status(200).json({
+      status: "sucess",
+      data: order,
+    });
   } catch (err) {
     res.status(500).json({
       message: "internal server error",
