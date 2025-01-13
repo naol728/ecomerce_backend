@@ -1,7 +1,7 @@
 const Order = require("../model/ordermodel");
 exports.checkbody = (req, res, next) => {
   const { userId, items, totalAmount } = req.body;
-  if (!userId || !items || totalAmount) {
+  if (!userId || items.length <= 0 || !totalAmount) {
     res.status(400).json({
       message: "missing required bodys ",
     });

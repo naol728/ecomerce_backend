@@ -9,6 +9,7 @@ exports.checkbody = (req, res, next) => {
   next();
 };
 exports.checkid = async (req, res, next) => {
+  const id = req.params.id;
   const product = await Product.findById(id);
   if (!product) {
     return res.status(400).json({

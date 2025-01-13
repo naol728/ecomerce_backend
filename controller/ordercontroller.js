@@ -67,7 +67,14 @@ exports.deleteorder = async (req, res) => {
 };
 exports.addneworder = async (req, res) => {
   const { userId, items, totalAmount, status, orderDate } = req.body;
+  const existingorder = await Order.findOne({ userId });
   try {
+    console.log(existingorder);
+    if (existingorder) {
+      return res.status(400).json({
+        message: "alredy order is exist",
+      });
+    }
     const order = new Order({
       userId,
       items,
@@ -76,6 +83,10 @@ exports.addneworder = async (req, res) => {
       orderDate,
     });
     await order.save();
+    res.status(201).json({
+      status: "successfuly orderd the products",
+      data: order,
+    });
   } catch (err) {
     res.status(500).json({
       message: "internal server error",
