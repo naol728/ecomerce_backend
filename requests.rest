@@ -9,7 +9,7 @@ Content-Type: application/json
 ###
 ### GET Request
 GET http://localhost:3000/api/users/6784c8ac9ce03e2cb9b013ea
-Authorization: Bearer   eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODRjOGFjOWNlMDNlMmNiOWIwMTNlYSIsImlhdCI6MTczNjc3MTA2NiwiZXhwIjoxNzM2ODU3NDY2fQ.v3IDm1CWYS7svAa05uSuXByweV08C3MoM9up6lA5db4
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODRjOGFjOWNlMDNlMmNiOWIwMTNlYSIsImlhdCI6MTczNjc4OTI5OCwiZXhwIjoxNzM2NzkyODk4fQ.H5zsbl46Y_uKxcbIKuaE3ZBuJRsQZxY9vx-G39OzDL4
 Content-Type: application/json
 
 

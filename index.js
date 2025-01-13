@@ -12,15 +12,6 @@ app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();
 });
-// app.use(
-//   cors({
-//     allowedHeaders: ["Authorization", "Content-Type"],
-//   })
-// );
-app.use((req, res, next) => {
-  console.log("Headers:", req.headers);
-  next();
-});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userrouter);
