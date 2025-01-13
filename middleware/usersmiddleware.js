@@ -11,10 +11,10 @@ exports.checkbody = (req, res, next) => {
   next();
 };
 exports.checkid = async (req, res, next) => {
-  const id = req.param.id;
+  const id = req.params.id;
   const finduser = await User.findById(id);
   if (!finduser) {
-    return res.status(401).json({
+    return res.status(400).json({
       message: `no user found by ${id}`,
     });
   }
