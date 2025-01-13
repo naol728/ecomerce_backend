@@ -7,7 +7,7 @@ const login = async (req, res) => {
   console.log(email);
   try {
     const user = await User.findOne({ email });
-    console.log(user);
+
     if (!user)
       return res.status(401).json({ message: "Invalid email or password" });
 
@@ -17,7 +17,7 @@ const login = async (req, res) => {
     //   return res.status(401).json({ message: "Invalid email or password" });
 
     const token = generateToken(user._id);
-
+    console.log(token);
     res.status(200).json({ message: "Login successful", token });
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
