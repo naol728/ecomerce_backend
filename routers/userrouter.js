@@ -13,7 +13,13 @@ router
     [usersmiddleware.checkid, authmiddleware.protect],
     usercontroler.getsingleuser
   )
-  .patch(usersmiddleware.checkid, usercontroler.updateuser)
-  .delete(usersmiddleware.checkid, usercontroler.deleteuser);
+  .patch(
+    [usersmiddleware.checkid, authmiddleware.protect],
+    usercontroler.updateuser
+  )
+  .delete(
+    [usersmiddleware.checkid, authmiddleware.protect],
+    usercontroler.deleteuser
+  );
 
 module.exports = router;
