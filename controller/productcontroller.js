@@ -64,6 +64,7 @@ exports.deleteproduct = async (req, res) => {
   }
 };
 exports.addnewproduct = async (req, res) => {
+  console.log(req.body);
   const {
     name,
     description,
