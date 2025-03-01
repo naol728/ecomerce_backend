@@ -5,11 +5,11 @@ const protect = (req, res, next) => {
   if (!token)
     return res.status(401).json({ message: "Not authorized, no token" });
   try {
-
     const decoded = verifyToken(token);
     req.user = decoded;
     next();
   } catch (error) {
+    console.log(error)
     res.status(401).json({ message: "Token is invalid or expired", error });
   }
 };
