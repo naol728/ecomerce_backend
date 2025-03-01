@@ -1,5 +1,5 @@
 const Product = require("../model/productmodel");
-
+const multer = require("multer");
 exports.getallproducts = async (req, res) => {
   try {
     const products = await Product.find();
@@ -65,29 +65,32 @@ exports.deleteproduct = async (req, res) => {
 };
 exports.addnewproduct = async (req, res) => {
   console.log(req.body);
+  // Check if an image was uploaded
+  if (!req.file) {
+    return res.status(400).json({ message: "No image uploaded" });
+  }
   const {
     name,
     description,
     price,
     category,
     stock,
-    image,
     brand,
     rating,
     numReviews,
     isFeatured,
-  } = req.body;
+  } = req.productData;
   const newproduct = new Product({
     name,
     description,
     price,
     category,
     stock,
-    image,
     brand,
     rating,
     numReviews,
     isFeatured,
+    image: req.file.path,
   });
   await newproduct.save();
 

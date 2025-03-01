@@ -2,11 +2,15 @@ const express = require("express");
 const productcontroler = require("../controller/productcontroller");
 const productmiddleware = require("../middleware/productmiddleware");
 const router = express.Router();
-
+const upload = require("../middleware/upload");
 router
   .route("/")
   .get(productcontroler.getallproducts)
-  .post(productmiddleware.checkbody, productcontroler.addnewproduct);
+  .post(
+    productmiddleware.checkbody,
+    upload.single("image"),
+    productcontroler.addnewproduct
+  );
 
 router
   .route("/:id")
