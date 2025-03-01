@@ -3,6 +3,7 @@ const upload = require("./upload"); // Import Multer middleware
 
 exports.checkbody = (req, res, next) => {
   upload.single("image")(req, res, (err) => {
+    // HANDLE ERROR IN MULTER
     if (err) {
       console.error("Multer Error:", err); // Log the Multer error
       return res
@@ -11,10 +12,19 @@ exports.checkbody = (req, res, next) => {
     }
 
     // Log the request body and file
-    console.log("Request Body:", req.body);
-    console.log("Uploaded File:", req.file);
+    // console.log("Request Body:", req.body);
+    // console.log("Uploaded File:", req.file);
 
-    const { name, description, price, stock } = req.body;
+    const {
+      name,
+      description,
+      price,
+      stock,
+      isFeatured,
+      numReviews,
+      rating,
+      category,
+    } = req.body;
     const image = req.file ? req.file.path : null; // Get the file path if uploaded
 
     if (!name || !description || !price || !stock || !image) {
@@ -24,10 +34,17 @@ exports.checkbody = (req, res, next) => {
     }
 
     // Attach the file path and other fields to the request object for later use
-    req.productData = { name, description, price, stock, image };
-
-    // // Attach the file path to the request object for later use
-    // req.imagePath = image;
+    req.productData = {
+      name,
+      description,
+      price,
+      stock,
+      isFeatured,
+      numReviews,
+      rating,
+      category,
+      image,
+    };
 
     next();
   });
