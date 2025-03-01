@@ -6,11 +6,7 @@ const upload = require("../middleware/upload");
 router
   .route("/")
   .get(productcontroler.getallproducts)
-  .post(
-    productmiddleware.checkbody,
-    upload.single("image"),
-    productcontroler.addnewproduct
-  );
+  .post(productmiddleware.checkbody, productcontroler.addnewproduct);
 
 router
   .route("/:id")
