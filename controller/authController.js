@@ -23,5 +23,8 @@ const login = async (req, res) => {
     res.status(500).json({ message: "Server  error", error });
   }
 };
+const varify = async (req, res) => {
+  res.status(200).json({ message: "varified", user: req.user });
+};
 
-module.exports = { login };
+module.exports = { login, varify };

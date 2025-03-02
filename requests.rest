@@ -8,6 +8,6 @@ Content-Type: application/json
 
 ###
 ### GET Request
-GET http://localhost:3000/api/users/67c33e3150e3074df39072e2
+POST  http://localhost:3000/api/auth
 Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YzMzZTMxNTBlMzA3NGRmMzkwNzJlMiIsImlhdCI6MTc0MDg0OTgxNCwiZXhwIjoxNzQwOTM2MjE0fQ.1BBF-_TPAcg0Acufy-XRDgNWKb2DJysmyStQp6U-JgE
 Content-Type: application/json

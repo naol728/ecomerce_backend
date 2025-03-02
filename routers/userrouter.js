@@ -9,14 +9,8 @@ router
   .post(usersmiddleware.checkbody, usercontroler.addnewuser);
 router
   .route("/:id")
-  .get(
-    [usersmiddleware.checkid, authmiddleware.protect],
-    usercontroler.getsingleuser
-  )
-  .patch(
-    [usersmiddleware.checkid, authmiddleware.protect],
-    usercontroler.updateuser
-  )
+  .get(usersmiddleware.checkid, usercontroler.getsingleuser)
+  .patch(usersmiddleware.checkid, usercontroler.updateuser)
   .delete(usersmiddleware.checkid, usercontroler.deleteuser);
 
 module.exports = router;
