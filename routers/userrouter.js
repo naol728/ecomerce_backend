@@ -17,9 +17,6 @@ router
     [usersmiddleware.checkid, authmiddleware.protect],
     usercontroler.updateuser
   )
-  .delete(
-    [usersmiddleware.checkid, authmiddleware.protect],
-    usercontroler.deleteuser
-  );
+  .delete(usersmiddleware.checkid, usercontroler.deleteuser);
 
 module.exports = router;

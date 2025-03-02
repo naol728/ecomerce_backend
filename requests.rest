@@ -2,38 +2,12 @@ POST  http://localhost:3000/api/auth/login
 Content-Type: application/json
 
 {
-"email":"naolmeseret22@gmail.com",
+"email":"abdela@gmail.com",
 "password":"12345678"
 }
 
 ###
 ### GET Request
-GET https://localhost:3000/api/users/6784c8ac9ce03e2cb9b013ea
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODJiYTQ4ZTk5NmMzZWU5OTFiODJjYyIsImlhdCI6MTc0MDc2NDM4MSwiZXhwIjoxNzQwODUwNzgxfQ.rOHU9O7vCp9mdsBlU8-ICE1KFur35qJ-Yj4W8ubB8K4
+GET http://localhost:3000/api/users/67c33e3150e3074df39072e2
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YzMzZTMxNTBlMzA3NGRmMzkwNzJlMiIsImlhdCI6MTc0MDg0OTgxNCwiZXhwIjoxNzQwOTM2MjE0fQ.1BBF-_TPAcg0Acufy-XRDgNWKb2DJysmyStQp6U-JgE
 Content-Type: application/json
-
-POST http://localhost:3000/api/products
-Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-
-------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="name"
-
-iPhone 14
-------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="description"
-
-Latest iPhone model
-------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="price"
-
-999.99
-------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="stock"
-
-100
-------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="image"; filename="image.jpg"
-Content-Type: image/jpeg
-
-< /path/to/your/image.jpg
-------WebKitFormBoundary7MA4YWxkTrZu0gW--
