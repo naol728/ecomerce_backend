@@ -77,6 +77,7 @@ exports.addnewproduct = async (req, res) => {
     isFeatured,
     image,
   } = req.productData;
+  
   const newproduct = new Product({
     name,
     description,
