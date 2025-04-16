@@ -12,8 +12,8 @@ exports.checkbody = (req, res, next) => {
     }
 
     // Log the request body and file
-    // console.log("Request Body:", req.body);
-    // console.log("Uploaded File:", req.file);
+    console.log("Request Body:", req.body);
+    console.log("Uploaded File:", req.file);
 
     const {
       name,
@@ -33,7 +33,7 @@ exports.checkbody = (req, res, next) => {
       });
     }
 
-    // Attach the file path and other fields to the request object for later use
+    
     req.productData = {
       name,
       description,

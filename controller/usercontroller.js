@@ -16,7 +16,6 @@ exports.getallusers = async (req, res) => {
 };
 exports.getsingleuser = async (req, res) => {
   const userid = req.params.id;
-  console.log(userid);
   try {
     const user = await User.findById(userid);
     res.status(200).json({

@@ -2,6 +2,7 @@ const User = require("../model/usermodel");
 
 exports.checkbody = (req, res, next) => {
   const { password, email, name } = req.body;
+  console.log(req.body);
   if (!password || !email || !name) {
     return res.status(400).json({
       status: "error",
